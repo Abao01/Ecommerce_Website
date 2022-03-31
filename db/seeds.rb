@@ -2,6 +2,7 @@ require "csv"
 
 Game.delete_all
 Publisher.delete_all
+AdminUser.destroy_all
 
 filename = Rails.root.join("db/games.csv")
 #puts "Loading Games from the csv file: #{filename}"
@@ -24,5 +25,6 @@ games.each do |m|
     )
   end
 end
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
 puts "Created #{Publisher.count} Publishers."
-puts "Created #{Game.count} Games."AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+puts "Created #{Game.count} Games."
