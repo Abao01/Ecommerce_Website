@@ -25,4 +25,4 @@ games.each do |m|
   end
 end
 puts "Created #{Publisher.count} Publishers."
-puts "Created #{Game.count} Games."
+puts "Created #{Game.count} Games."AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

@@ -70,3 +70,6 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem 'activeadmin' # Admin dashboard as rails Engine (mini applicaiton)
+gem 'devise' # provides basic authentication by way of credentials.
