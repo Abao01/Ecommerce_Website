@@ -1,7 +1,28 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+require "csv"
+
+Game.delete_all
+Publisher.delete_all
+
+filename = Rails.root.join("db/games.csv")
+#puts "Loading Games from the csv file: #{filename}"
+csv_data = File.read(filename)
+
+games = CSV.parse(csv_data, headers: true, encoding: "utf-8")
+
+games.each do |m|
+  # puts m["genre"]
+  publisher = Publisher.find_or_create_by(name: m["publisher"])
+  # publisher = Publisher.create(name: m["publisher"])
+
+  if publisher && publisher.valid?
+    game = publisher.games.create(
+      name: m["name"],
+      description:  m["description"],
+      price:        m["price"],
+      role:         m["roles"],
+      publisher_id:     publisher["id"]
+    )
+  end
+end
+puts "Created #{Publisher.count} Publishers."
+puts "Created #{Game.count} Games."
