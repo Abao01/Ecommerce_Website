@@ -10,7 +10,7 @@
     </div>
     <footer class="card-footer">
       <p class="card-footer-item">
-        Price: <br><%= game.price %>
+        Price: <br><%= number_to_currency game.price.to_f %>
       </p>
       <p class="card-footer-item">
         Description: <br><%= game.description %>

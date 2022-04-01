@@ -2,7 +2,11 @@ require "csv"
 
 Game.delete_all
 Publisher.delete_all
-AdminUser.destroy_all
+AdminUser.delete_all
+GameGenre.delete_all
+Genre.delete_all
+
+
 
 filename = Rails.root.join("db/games.csv")
 #puts "Loading Games from the csv file: #{filename}"
@@ -23,11 +27,16 @@ games.each do |m|
       role:         m["roles"],
       publisher_id:     publisher["id"]
     )
-    # query = URI.encode_www_form_component([game.name,publisher.name].join(","))
-    # downloaded_img = URI.open("https://source.unsplash.com/200x200/?#{query}")
-    # game.image.attach(io: downloaded_img, filename: "m-#{[game.name,publisher.name].join('-')}.jpg")
+    genres = m["genre"].split(",").map(&:strip)
+    genres.each do |genre|
+      genre = Genre.create(name: genre)
+    end
+    query = URI.encode_www_form_component([game.name,publisher.name].join(","))
+    downloaded_img = URI.open("https://source.unsplash.com/200x200/?#{query}")
+    game.image.attach(io: downloaded_img, filename: "m-#{[game.name,publisher.name].join('-')}.jpg")
   end
 end
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
 puts "Created #{Publisher.count} Publishers."
 puts "Created #{Game.count} Games."
+puts "Created #{Genre.count} Genres."
