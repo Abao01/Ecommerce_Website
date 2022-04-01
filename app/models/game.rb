@@ -5,5 +5,5 @@ class Game < ApplicationRecord
   validates :name, uniqueness: true
   validates :price, presence: true
 
-
+  has_one_attached :image
 end

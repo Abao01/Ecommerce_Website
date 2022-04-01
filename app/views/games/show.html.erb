@@ -1,2 +1,4 @@
-<h1>Games#show</h1>
-<p><%= @game.name%></p>
+<h1>Game</h1>
+<div class="columns">
+  <%= render partial: 'game', object: @game, locals:{show_link: false} %>
+</div>

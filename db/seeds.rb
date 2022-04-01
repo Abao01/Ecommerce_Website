@@ -23,6 +23,9 @@ games.each do |m|
       role:         m["roles"],
       publisher_id:     publisher["id"]
     )
+    # query = URI.encode_www_form_component([game.name,publisher.name].join(","))
+    # downloaded_img = URI.open("https://source.unsplash.com/200x200/?#{query}")
+    # game.image.attach(io: downloaded_img, filename: "m-#{[game.name,publisher.name].join('-')}.jpg")
   end
 end
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
