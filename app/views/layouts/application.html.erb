@@ -12,6 +12,44 @@
   </head>
 
   <body>
+    <header>
+      <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div id="navbarBasicExample" class="navbar-menu">
+          <div class="navbar-start">
+            <a class="navbar-item">
+              <%= link_to "Home", root_path%>
+            </a>
+            <a class="navbar-item">
+              <%= link_to "Games", games_path %>
+            </a>
+            <a class="navbar-item">
+              <%= link_to "Publishers", publishers_path %>
+            </a>
+            <a class="navbar-item">
+              <%= link_to "Genre", genres_path %>
+            </a>
+          </div>
+           <div class="navbar-end">
+              <div class="navbar-item">
+                <div class="buttons">
+                  <div class="field is-grouped">
+                    <p class="control">
+                      <button class="button is-link">
+                          <%= link_to "My account", admin_root_path %>
+                      </button>
+                    </p>
+                    <p class="control">
+                      <button class="button is-danger">
+                       My cart
+                      </button>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>

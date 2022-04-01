@@ -1,0 +1,8 @@
+<div class="content is-medium">
+  <h1>Popular Geners</h1>
+  <ol>
+    <% @genres.each do |genre| %>
+      <li><%= link_to genre.name,genre%></li>
+    <% end %>
+  </ol>
+</div>

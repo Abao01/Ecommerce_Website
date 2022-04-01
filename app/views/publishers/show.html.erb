@@ -1,2 +1,7 @@
-<h1>Publishers#show</h1>
-<p>Find me in app/views/publishers/show.html.erb</p>
+<div class="content is-medium">
+  <ul>
+    <% @publisher.games.each do |publisher| %>
+      <li><%= link_to publisher.name, publisher%></li>
+    <%end%>
+  </ul>
+</div>

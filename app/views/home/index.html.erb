@@ -10,11 +10,11 @@
           </div>
         <% end %>
         <div class="media-content">
-          <p class="title is-4"><%=  link_to game.name,game %></p>
+          <p class="title is-4"><%=  link_to game.name,game%></p>
           <p class="subtitle is-6">Publisher: <%= game.publisher.name %></p>
         </div>
         <div class="content">
-          <p><strong> price: <%= game.price %></strong></p>
+          <p><strong> price: <%= number_to_currency game.price.to_f %></strong></p>
           <p><strong> Role: <%= game.role %> </strong></p>
           <p>Description: <br><%= game.description %></p>
         </div>
