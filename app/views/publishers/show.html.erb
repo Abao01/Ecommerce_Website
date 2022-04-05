@@ -1,7 +1,8 @@
-<div class="content is-medium">
-  <ul>
-    <% @publisher.games.each do |publisher| %>
-      <li><%= link_to publisher.name, publisher%></li>
-    <%end%>
-  </ul>
+<h3 class="title is-4"><%= @publisher.name%></h3>
+<h4 class="title is-5">Game of this publisher</h4>
+<div >
+  <%= render partial:'games/game',
+            collection:@publisher.games,
+            locals: {show_link:true}%>
 </div>
+

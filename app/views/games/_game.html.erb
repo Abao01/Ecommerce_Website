@@ -1,0 +1,20 @@
+<%
+  show_link = true
+%>
+
+<div class="column">
+  <div class="card">
+    <div class="card-content">
+      <p class="title">
+        <% if show_link %>
+          <%= link_to game.name, game%>
+        <% else %>
+          <%= game.name%>
+        <% end %>
+      </p>
+      <p>Publisher: <%= link_to game.publisher.name, game.publisher%></p>
+    </div>
+  </div>
+</div>
+
+

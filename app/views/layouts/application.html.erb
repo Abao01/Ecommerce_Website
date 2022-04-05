@@ -12,54 +12,56 @@
   </head>
 
   <body>
-    <header>
-      <h1>Game Camp</h1>
-      <h3>Shop games, exclusive Nintendo merchandise, and more!  Plus, get free shipping on orders $50 and over.</h3>
-      <nav class="navbar" role="navigation" aria-label="main navigation">
-        <div id="navbarBasicExample" class="navbar-menu">
-          <div class="navbar-start">
-            <a class="navbar-item">
-              <%= link_to "Home", root_path%>
-            </a>
-            <a class="navbar-item">
-              <%= link_to "Games", games_path %>
-            </a>
-            <a class="navbar-item">
-              <%= link_to "Publishers", publishers_path %>
-            </a>
-            <a class="navbar-item">
-              <%= link_to "Genre", genres_path %>
-            </a>
-          </div>
-           <div class="navbar-end">
-              <div class="navbar-item">
-                <div class="buttons">
-                  <div class="field is-grouped">
-                    <p class="control">
-                      <button class="button is-link">
-                          <%= link_to "My account", admin_root_path %>
-                      </button>
-                    </p>
-                    <p class="control">
-                      <button class="button is-danger">
-                       My cart
-                      </button>
-                    </p>
+    <section class="section">
+      <div class="container">
+        <header>
+          <h1 class="title is-1"><%= link_to 'Game Camp',root_path %></h1>
+          <nav class="navbar" role="navigation" aria-label="main navigation">
+            <div id="navbarBasicExample" class="navbar-menu">
+              <div class="navbar-start">
+                <a class="navbar-item">
+                  <h3><%= link_to "Home", root_path%></h3>
+                </a>
+                <a class="navbar-item">
+                  <h3><%= link_to "Games", games_path %></h3>
+                </a>
+                <a class="navbar-item">
+                  <h3><%= link_to "Publishers", publishers_path %></h3>
+                </a>
+                <a class="navbar-item">
+                  <h3><%= link_to "Genre", genres_path %></h3>
+                </a>
+              </div>
+              <div class="navbar-end">
+                  <div class="navbar-item">
+                    <div class="buttons">
+                      <div class="field is-grouped">
+                        <p class="control">
+                          <button class="button is-link">
+                              <%= link_to "My account", admin_root_path %>
+                          </button>
+                        </p>
+                        <p class="control">
+                          <button class="button is-danger">My cart</button>
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
             </div>
-        </div>
-      </nav>
-    </header>
-    <div class="container">
-      <%= form_tag(method:"get") do%>
-        <%= label_tag(:q,"Search for:")%>
-        <%= text_field_tag(:q,nil, class: "input", placeholder: "What are you looking for? ")%>
-        <%= submit_tag("Search")%>
-        <p>Can't find what you're looking for? Try the Advanced Search</p>
-      <%end%>
+          </nav>
+          <h3>Shop games, exclusive Nintendo merchandise, and more!  Plus, get free shipping on orders $50 and over.</h3>
+        </header>
+      </div>
+      <div class="container">
+        <%= form_tag(method:"get") do%>
+          <%= label_tag(:q,"Search for:")%>
+          <%= text_field_tag(:q,nil, class: "input", placeholder: "What are you looking for? ")%>
+          <%= submit_tag("Search")%>
+          <p>Can't find what you're looking for? Try the Advanced Search</p>
+        <%end%>
     </div>
-    <%= yield %>
+  </section>
+  <%= yield %>
   </body>
 </html>

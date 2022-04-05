@@ -1,8 +1,5 @@
-<h1>Game</h1>
 <div class="columns">
-  <%#= render partial: 'game', object: @game, locals:{show_link: false} %>
-</div>
-<div class="content is-medium">
-  <h1><%= @game.name%></h1>
-  <p><%= @game.name %> was maked by <%= @game.publisher.name %></p>
+  <%= render partial: 'game',
+             object: @game,
+             locals: {show_link:true}%>
 </div>

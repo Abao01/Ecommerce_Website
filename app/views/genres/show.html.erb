@@ -1,2 +1,4 @@
-<h1>Genres#show</h1>
-<p>Find me in app/views/genres/show.html.erb</p>
+<h3><%= @genre.name%></h3>
+<h4>Game of this genre</h4>
+
+<%= render @genre.games %>
