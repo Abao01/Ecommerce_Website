@@ -4,7 +4,7 @@
       <h2><%= pluralize(page.errors.count, "error") %> prohibited this page from being saved:</h2>
 
       <ul>
-        <% page.errors.each do |error| %>
+        <% page.errors.full_message.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>

@@ -13,7 +13,7 @@
         <% end %>
         <div class="media-content">
           <p class="title is-4"><%=  link_to game.game_name,game %></p>
-          <p class="subtitle is-6">Publisher: <%= link_to game.publisher.name, game.publisher%></p>
+          <p class="subtitle is-6">Publisher: <%= link_to game.publisher.publisher_name, game.publisher%></p>
         </div>
         <div class="card-content">
           <p><strong> price: <%=number_to_currency game.price%></strong></p>
@@ -23,3 +23,4 @@
     <% end %>
   </div>
 </div>
+<%= paginate @games %>

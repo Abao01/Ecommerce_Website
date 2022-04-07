@@ -1,12 +1,6 @@
 <div class="content is-medium">
-  <h1>Popular Geners</h1>
-  <ol>
-    <% @genres.each do |genre| %>
-      <li><%= link_to genre.name,genre%></li>
-    <% end %>
-  </ol>
+  <h3 class="title is-3">All Games Genres</h3>
+  <% @genres.each do |genre|%>
+    <p><%= link_to genre.name, genre%></p>
+  <% end %>
 </div>
-<ol>
-  <%= render @genres %>
-  <%= paginate @genres %>
-</ol>

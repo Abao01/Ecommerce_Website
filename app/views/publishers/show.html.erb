@@ -1,8 +1,7 @@
-<h3 class="title is-4"><%= @publisher.name%></h3>
+<h3 class="title is-4"><%= @publisher.publisher_name%></h3>
 <h4 class="title is-5">Game of this publisher</h4>
 <div >
   <%= render partial:'games/game',
             collection:@publisher.games,
             locals: {show_link:true}%>
 </div>
-

@@ -24,43 +24,41 @@
                   <%= link_to "Home", root_path%>
                 </a>
                 <a class="navbar-item">
-                  <%= link_to "Games", games_path %>
+                  Loin in
                 </a>
-
+                <a class="navbar-item">
+                  sign up
+                </a>
                 <div class="navbar-item has-dropdown is-hoverable">
-                  <a class="navbar-item">
-                    <%= link_to "Publishers", publishers_path %>
+                  <a class="navbar-link">
+                    More
                   </a>
                   <div class="navbar-dropdown">
                     <a class="navbar-item">
-
+                      <%= link_to "Games", games_path %>
                     </a>
-                  </div>
-                </div>
-                <div class="navbar-item has-dropdown is-hoverable">
-                  <a class="navbar-item">
-                    <%= link_to "Genre", genres_path %>
-                  </a>
-                  <div class="navbar-dropdown">
                     <a class="navbar-item">
-                      Overview
+                      <%= link_to "Publishers", publishers_path %>
+                    </a>
+                    <a class="navbar-item">
+                      <%= link_to "Genre", genres_path %>
                     </a>
                   </div>
                 </div>
-              </div>
-            </div>
-            <div class="navbar-end">
-              <div class="navbar-item">
-                <div class="buttons">
-                  <div class="field is-grouped">
-                    <p class="control">
-                      <button class="button is-link">
-                          <%= link_to "My account", admin_root_path %>
-                      </button>
-                    </p>
-                    <p class="control">
-                      <button class="button is-danger">My cart</button>
-                    </p>
+                <div class="navbar-end">
+                  <div class="navbar-item">
+                    <div class="buttons">
+                      <div class="field is-grouped">
+                        <p class="control">
+                          <button class="button is-link">
+                              <%= link_to "My account", admin_root_path %>
+                          </button>
+                        </p>
+                        <p class="control">
+                          <button class="button is-danger">My cart</button>
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

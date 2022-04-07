@@ -7,4 +7,6 @@ class Game < ApplicationRecord
   validates :price, presence: true
 
   has_one_attached :image
+
+  paginates_per 10
 end

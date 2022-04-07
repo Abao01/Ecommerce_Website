@@ -1,7 +1,7 @@
 class GenresController < ApplicationController
   def index
-    # @genres = Genre.all
-    @genres = Genre.ordered_by_genres
+    @genres = Genre.all
+    # @genres = Genre.ordered_by_genres
     # .page params[:page]
   end
 

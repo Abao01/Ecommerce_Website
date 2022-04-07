@@ -13,9 +13,8 @@
     <%= label_tag "To" %>
     <%= text_field_tag :max_price, params[:max_price] %><br><br>
 
-    <p>Filters</p>
     <%= label_tag "Filters" %>
-    <%= select_tag :publish_time, options_for_select({"最近3天创建": "last_3_days_created", "最近3天更新": "last_3_days_updated"}, params[:publish_time]), include_blank: true  %><br><br>
+    <%= select_tag :publish_time, options_for_select({"Created in lastest 3 days": "last_3_days_created", "Upated": "last_3_days_updated"}, params[:publish_time]), include_blank: true  %><br><br>
 
     <%= submit_tag "Search" %>
   <% end %>
@@ -24,3 +23,5 @@
 <section>
   <%= render partial:'game', collection: @games, locals: {show_link:true} %>
 </section>
+
+<%# <%= paginate @games %>

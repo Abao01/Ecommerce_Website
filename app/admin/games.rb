@@ -5,7 +5,7 @@ ActiveAdmin.register Game do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :name, :price, :description, :role, :publisher_id, :image
+  permit_params :game_name, :price, :description, :role, :publisher_id, :image
 
   #DSL - Domain Specific language - easy way to implment something using code like syntax without writing
   form do |f|
