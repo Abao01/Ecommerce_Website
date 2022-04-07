@@ -1,10 +1,10 @@
 class Publisher < ApplicationRecord
   has_many :games
 
-  validates :name, uniqueness: true
-  validates :name, presence: true
+  validates :publisher_name, uniqueness: true
+  validates :publisher_name, presence: true
 
-  def self.ordered_by_products
+  def self.ordered_by_games
     self.select("publishers.*")
         .select("COUNT(publishers.id) as game_count")
         .left_joins(:games)

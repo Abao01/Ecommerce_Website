@@ -1,6 +1,8 @@
+<h1>Home</h1>
+
 <div class="column is-one-third">
   <div class="card">
-    <div class="card-content">
+    <div class="card-content" >
       <% @games.each do |game| %>
         <% if game.image.present? %>
           <div class="card-image">
@@ -10,11 +12,11 @@
           </div>
         <% end %>
         <div class="media-content">
-          <p class="title is-4"><%=  link_to game.name,game%></p>
-          <p class="subtitle is-6">Publisher: <%= game.publisher.name %></p>
+          <p class="title is-4"><%=  link_to game.name,game %></p>
+          <p class="subtitle is-6">Publisher: <%= link_to game.publisher.publisher_name, game.publisher%></p>
         </div>
-        <div class="content">
-          <p><strong> price: <%= number_to_currency game.price %></strong></p>
+        <div class="card-content">
+          <p><strong> price: <%=number_to_currency game.price%></strong></p>
           <p><strong> Role: <%= game.role %> </strong></p>
           <p>Description: <br><%= game.description %></p>
         </div>

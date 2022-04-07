@@ -1,23 +1,22 @@
-<div class="column is-one-third">
-  <div class="card">
-    <div class="card-content" >
-      <% @games.each do |game| %>
-        <% if game.image.present? %>
-          <div class="card-image">
-            <figure class="image is-4by3">
-              <p><%= image_tag game.image %></p>
-            </figure>
-          </div>
-        <% end %>
-        <div class="media-content">
-          <p class="title is-4"><%=  link_to game.name,game %></p>
-          <p class="subtitle is-6">Publisher: <%= link_to game.publisher.name, game.publisher%></p>
-        </div>
-        <div class="card-content">
-          <p><strong> price: <%=number_to_currency game.price / 100.0%></strong></p>
-          <p><strong> Role: <%= game.role %> </strong></p>
-          <p>Description: <br><%= game.description %></p>
-        </div>
-    <% end %>
-  </div>
+<h1>Advanced Search</h1>
+<div class="container">
+  <%= form_tag games_path, method: :get do %>
+    <%= label_tag :keywords %>
+    <%= text_field_tag :keywords, params[:keywords] %><br>
+
+    <%= label_tag :publisher %>
+    <%= select_tag :publisher, options_for_select(@publishers, params[:publisher]), include_blank: true %><br>
+
+    <%= label_tag "price From" %>
+    <%= text_field_tag :min_price, params[:min_price] %>
+
+    <%= label_tag "To" %>
+    <%= text_field_tag :max_price, params[:max_price] %><br><br>
+
+    <%= submit_tag "Search" %>
+  <% end %>
 </div>
+
+<section>
+  <%= render partial:'game', collection: @games, locals: {show_link:true} %>
+</section>

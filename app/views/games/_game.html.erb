@@ -12,7 +12,11 @@
           <%= game.name%>
         <% end %>
       </p>
-      <p>Publisher: <%= link_to game.publisher.name, game.publisher%></p>
+      <p><%= image_tag game.image %></p>
+      <p>Publisher: <%= link_to game.publisher.publisher_name, game.publisher%></p>
+      <p><strong> price: <%=number_to_currency game.price%></strong></p>
+      <p><strong> Role: <%= game.role %> </strong></p>
+      <p>Description: <br><%= game.description %></p>
     </div>
   </div>
 </div>

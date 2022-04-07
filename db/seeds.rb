@@ -31,6 +31,8 @@ games.each do |m|
       genre = Genre.create(name: genre)
     end
 
+    game_genres =
+
     query = URI.encode_www_form_component([game.name,publisher.name].join(","))
     downloaded_img = URI.open("https://source.unsplash.com/200x200/?#{query}")
     game.image.attach(io: downloaded_img, filename: "m-#{[game.name,publisher.name].join('-')}.jpg")
