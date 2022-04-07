@@ -1,7 +1,7 @@
 require "csv"
 
-Game.delete_all
 Publisher.delete_all
+Game.delete_all
 AdminUser.delete_all
 GameGenre.delete_all
 Genre.delete_all
@@ -19,23 +19,26 @@ games.each do |m|
   # publisher = Publisher.create(name: m["publisher"])
 
   if publisher && publisher.valid?
-    game = publisher.games.create(
+    next if publisher.games.exists?(name: m["name"])
+
+    game = publisher.games.create!(
       name: m["name"],
       description:  m["description"],
       price:        m["price"],
       role:         m["roles"],
       publisher_id:     publisher["id"]
     )
+
     genres = m["genre"].split(",").map(&:strip)
     genres.each do |genre|
-      genre = Genre.create(name: genre)
+      genre = Genre.find_or_create_by!(name: genre)
+      gg = GameGenre.create!(game: game, genre: genre)
+      puts "gg: #{gg.id} created"
     end
 
-    game_genres =
-
-    query = URI.encode_www_form_component([game.name,publisher.name].join(","))
+    query = URI.encode_www_form_component(["super mario"])
     downloaded_img = URI.open("https://source.unsplash.com/200x200/?#{query}")
-    game.image.attach(io: downloaded_img, filename: "m-#{[game.name,publisher.name].join('-')}.jpg")
+    game.image.attach(io: downloaded_img, filename: "m-#{[game.name]}.jpg")
   end
 end
 
@@ -55,3 +58,5 @@ AdminUser.create!(email: 'admin@example.com', password: 'password', password_con
 puts "Created #{Publisher.count} Publishers."
 puts "Created #{Game.count} Games."
 puts "Created #{Genre.count} Genres."
+
+puts "Create #{GameGenre.count} GameGeners"

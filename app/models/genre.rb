@@ -1,5 +1,5 @@
 class Genre < ApplicationRecord
-  has_many :game
+  has_many :games
 
   validates :name, presence: true
   validates :name, uniqueness: true
@@ -13,5 +13,4 @@ class Genre < ApplicationRecord
         .group("genres.id")
         .order("genre_count DESC")
   end
-
 end

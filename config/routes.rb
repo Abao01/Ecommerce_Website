@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     collection do
       get 'search'
     end
-  end4
+  end
   resources :genres,only: [:index, :show]
   resources :search,only: [:index, :show]
   root "home#index"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_07_024241) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_07_140804) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -75,7 +75,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_07_024241) do
   end
 
   create_table "games", force: :cascade do |t|
-    t.string "name"
+    t.string "game_name"
     t.decimal "price"
     t.text "description"
     t.string "role"
@@ -100,14 +100,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_07_024241) do
   end
 
   create_table "publishers", force: :cascade do |t|
-    t.string "publisher_name"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "game_genres", "games"
-  add_foreign_key "game_genres", "genres"
-  add_foreign_key "games", "publishers"
 end

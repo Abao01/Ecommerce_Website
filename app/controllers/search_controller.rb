@@ -1,7 +1,7 @@
 class SearchController < ApplicationController
   def index
-    @games = Game.where('name LIKE ?', "%#{params[:q]}%")
-    @game_count = Game.where('name LIKE ?', "%#{params[:q]}%")
+    @games = Game.where('game_name LIKE ?', "%#{params[:q]}%")
+    @game_count = Game.where('game_name LIKE ?', "%#{params[:q]}%")
   end
 
   def show

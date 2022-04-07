@@ -1,15 +1,15 @@
 class GamesController < ApplicationController
   def index
     @games = Game.includes(:publisher).all
-    @publishers = Publisher.distinct.pluck(:Publisher_name)
+    @publishers = Publisher.distinct.pluck(:name)
     @prices = Game.distinct.pluck(:price)
 
     if params[:keywords].present?
-      @games = @games.where("name LIKE ?", "%#{params[:keywords]}%")
+      @games = @games.where("game_name LIKE ?", "%#{params[:keywords]}%")
     end
 
     if params[:publisher].present?
-      @games = @games.joins(:publisher).where("publishers.publisher_name like ?", "%#{params[:publisher]}%")
+      @games = @games.joins(:publisher).where("publishers.name like ?", "%#{params[:publisher]}%")
     end
 
     if params[:min_price].present?
@@ -19,6 +19,15 @@ class GamesController < ApplicationController
     if params[:max_price].present?
       @games = @games.where("price <= ?", params[:max_price])
     end
+
+    if params[:publish_time].present?
+      case params[:publish_time]
+      when "last_3_days_created"
+        @games = @games.where("created_at > ?", 3.days.ago)
+      when "last_3_days_updated"
+        @games = @games.where("updated_at > :keyword and created_at <= :keyword", keyword: 3.days.ago)
+      end
+    end
   end
 
   def show
@@ -27,6 +36,6 @@ class GamesController < ApplicationController
 
   def search
     wildcard = "%#{params[:keywords]}%"
-    @games = Game.where("name LIKE ?", wildcard)
+    @games = Game.where("game_name LIKE ?", wildcard)
   end
 end

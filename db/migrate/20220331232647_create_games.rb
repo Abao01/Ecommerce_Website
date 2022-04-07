@@ -5,7 +5,7 @@ class CreateGames < ActiveRecord::Migration[7.0]
       t.decimal :price
       t.text :description
       t.string :role
-      t.references :publisher, null: false, foreign_key: true
+      t.belongs_to :publisher, null: false
 
       t.timestamps
     end

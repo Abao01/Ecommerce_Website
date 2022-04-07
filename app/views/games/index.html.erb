@@ -1,7 +1,7 @@
 <h1>Advanced Search</h1>
 <div class="container">
   <%= form_tag games_path, method: :get do %>
-    <%= label_tag :keywords %>
+    <%= label_tag :game %>
     <%= text_field_tag :keywords, params[:keywords] %><br>
 
     <%= label_tag :publisher %>
@@ -12,6 +12,10 @@
 
     <%= label_tag "To" %>
     <%= text_field_tag :max_price, params[:max_price] %><br><br>
+
+    <p>Filters</p>
+    <%= label_tag "Filters" %>
+    <%= select_tag :publish_time, options_for_select({"最近3天创建": "last_3_days_created", "最近3天更新": "last_3_days_updated"}, params[:publish_time]), include_blank: true  %><br><br>
 
     <%= submit_tag "Search" %>
   <% end %>

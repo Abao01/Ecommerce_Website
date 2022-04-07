@@ -1,8 +1,8 @@
 class Publisher < ApplicationRecord
   has_many :games
 
-  validates :publisher_name, uniqueness: true
-  validates :publisher_name, presence: true
+  validates :name, uniqueness: true
+  validates :name, presence: true
 
   def self.ordered_by_games
     self.select("publishers.*")
