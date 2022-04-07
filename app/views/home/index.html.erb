@@ -1,8 +1,7 @@
 <h1>Home</h1>
-
-<div class="column is-one-third">
-  <div class="card">
-    <div class="card-content" >
+<div class="container">
+  <div class="row align-items-start">
+    <div class="col">
       <% @games.each do |game| %>
         <% if game.image.present? %>
           <div class="card-image">
@@ -21,6 +20,10 @@
           <p>Description: <br><%= game.description %></p>
         </div>
     <% end %>
+    </div>
   </div>
+
 </div>
+
+
 <%= paginate @games %>

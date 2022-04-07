@@ -1,41 +1,23 @@
-<nav class="navbar" role="navigation" aria-label="dropdown navigation">
-  <div id="navbarBasicExample" class="navbar-menu">
-    <div class="navbar-start">
-      <a class="navbar-item">
-        <%= link_to "Home", root_path%>
-      </a>
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          More
-        </a>
-        <div class="navbar-dropdown">
-          <a class="navbar-item">
-            <%= link_to "Games", games_path %>
-          </a>
-          <a class="navbar-item">
-            <%= link_to "Publishers", publishers_path %>
-          </a>
-          <a class="navbar-item">
-            <%= link_to "Genre", genres_path %>
-          </a>
+<div class="column is-one-third">
+  <div class="card">
+    <div class="card-content" >
+      <% @games.each do |game| %>
+        <% if game.image.present? %>
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <p><%= image_tag game.image %></p>
+            </figure>
+          </div>
+        <% end %>
+        <div class="media-content">
+          <p class="title is-4"><%=  link_to game.game_name,game %></p>
+          <p class="subtitle is-6">Publisher: <%= link_to game.publisher.publisher_name, game.publisher%></p>
         </div>
-      </div>
-    </div>
-  </div>
-  <div class="navbar-end">
-    <div class="navbar-item">
-      <div class="buttons">
-        <div class="field is-grouped">
-          <p class="control">
-            <button class="button is-link">
-                <%= link_to "My account", admin_root_path %>
-            </button>
-          </p>
-          <p class="control">
-            <button class="button is-danger">My cart</button>
-          </p>
+        <div class="card-content">
+          <p><strong> price: <%=number_to_currency game.price%></strong></p>
+          <p><strong> Role: <%= game.role %> </strong></p>
+          <p>Description: <br><%= game.description %></p>
         </div>
-      </div>
-    </div>
+    <% end %>
   </div>
-</nav>
+</div>
