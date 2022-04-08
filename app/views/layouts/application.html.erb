@@ -16,6 +16,11 @@
 
   <body>
     <%= render partial: "menu/header"%>
+    <% if notice %>
+    <div class="list-group-item list-group-item-success text-center">
+      <p class="notice"><%= notice %></p>
+    </div>
+    <% end %>
   <%= yield %>
   </body>
 </html>
