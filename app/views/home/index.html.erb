@@ -1,29 +1,26 @@
 <h1>Home</h1>
-<div class="container">
-  <div class="row align-items-start">
-    <div class="col">
+<div class="container_fluid">
+  <div class="column">
       <% @games.each do |game| %>
-        <% if game.image.present? %>
-          <div class="card-image">
-            <figure class="image is-4by3">
-              <p><%= image_tag game.image %></p>
-            </figure>
+        <div class="col-lg-4">
+          <% if game.image.present? %>
+            <div class="card-image">
+              <figure class="card-img-top">
+                <p><%= image_tag game.image %></p>
+              </figure>
+            </div>
+          <% end %>
+          <div class="media-content">
+            <p class="title is-4"><%=  link_to game.game_name,game %></p>
+            <p class="subtitle is-6">Publisher: <%= link_to game.publisher.publisher_name, game.publisher%></p>
           </div>
-        <% end %>
-        <div class="media-content">
-          <p class="title is-4"><%=  link_to game.game_name,game %></p>
-          <p class="subtitle is-6">Publisher: <%= link_to game.publisher.publisher_name, game.publisher%></p>
+          <div class="card-content">
+            <p><strong> price: <%=number_to_currency game.price%></strong></p>
+            <p><strong> Role: <%= game.role %> </strong></p>
+            <p>Description: <br><%= game.description %></p>
+          </div>
         </div>
-        <div class="card-content">
-          <p><strong> price: <%=number_to_currency game.price%></strong></p>
-          <p><strong> Role: <%= game.role %> </strong></p>
-          <p>Description: <br><%= game.description %></p>
-        </div>
-    <% end %>
-    </div>
+      <% end %>
   </div>
-
 </div>
-
-
 <%= paginate @games %>

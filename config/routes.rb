@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users
 
   resources :pages, except: [:show]
   get 'pages/:permalink' => "pages#permalink", as: 'permalink'
 
+  devise_for :users
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
