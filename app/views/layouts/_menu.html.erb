@@ -1,41 +1,31 @@
-<h5>Shop games, exclusive Nintendo merchandise, and more!  Plus, get free shipping on orders $50 and over.</h5>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Navbar</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item ">
-            <a class="nav-link" href="#"><%= link_to "Home", root_path%></a> <br>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"><%= link_to "Games", games_path %></a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              More
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item"><%= link_to "Games", games_path %></a>
-              <a class="dropdown-item" ><%= link_to "Publishers", publishers_path %></a>
-              <a class="dropdown-item" ><%= link_to "Genre", genres_path %></a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  <div class="container">
-        <%= form_with(url:search_games_path, local: true, method: :get) do %>
-          <%= label_tag(:keywords,"Search for:")%>
-          <%= text_field_tag(:keywords,nil, class: "input", placeholder: "What are you looking for? ")%>
-          <%= submit_tag("Search")%>
-          <p>Can't find what you're looking for? Try the <%= link_to "Advanced Search", games_path%></p>
-        <%end%>
-      </div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="jumbotron">
+				<h2>
+					你好世界！
+				</h2>
+				<p>
+					这是一个简单的营销或信息网站的模板。它包括一个称为英雄单元的大型标注和三个支持内容。以它为起点来创造更独特的东西。
+				</p>
+				<p>
+					<a class="btn btn-primary btn-large" href="#">学到更多</a>
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4">
+			<h2>
+				标题
+			</h2>
+			<p>
+				Donec id elit non mi porta gravida 在 eget metus。Fusce dapibus、tellus ac cursus commodo、tortor mauris condimentum nibh、ut balloonum massa justo sit amet risus。Etiam porta sem malesuada magna mollis euismod。Donec sed odio dui。
+			</p>
+			<p>
+				<a class="btn" href="#">查看详情 ”</a>
+			</p>
+		</div>
+	</div>
+</div>

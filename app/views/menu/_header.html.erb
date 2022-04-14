@@ -42,7 +42,6 @@
           <%= submit_tag("Search")%>
         <%end%>
       </form>
-
       <% if user_signed_in? %>
       <li class="nav-item">
         <%= link_to "Cart (#{@all_items_count})", shopping_carts_path, class: "nav-link text-muted " %>

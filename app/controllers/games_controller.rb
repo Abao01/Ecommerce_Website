@@ -27,9 +27,9 @@ class GamesController < ApplicationController
     if params[:publish_time].present?
       case params[:publish_time]
         when "last_3_days_created"
-          @games = @games.where("created_at > ?", 3.days.ago)
+          @games = @games.where("created_at > ?", 3.hours.ago)
         when "last_3_days_updated"
-          @games = @games.where("updated_at > :keyword and created_at <= :keyword", keyword: 3.days.ago)
+          @games = @games.where("updated_at > :keyword and created_at <= :keyword", keyword: 3.hours.ago)
       end
     end
     # @gamess = Game.page params[:page]
