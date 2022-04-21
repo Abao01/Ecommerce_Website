@@ -32,6 +32,8 @@ class GamesController < ApplicationController
           @games = @games.where("updated_at > :keyword and created_at <= :keyword", keyword: 3.hours.ago)
       end
     end
+
+    # @visit_count = 0
     # @gamess = Game.page params[:page]
   end
 
