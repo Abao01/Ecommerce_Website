@@ -24,5 +24,6 @@ Rails.application.routes.draw do
     get 'users/sign_out' => "devise/sessions#destroy"
   end
 
+  resources :cart,only: [:create, :destroy]
   resources :shopping_carts
 end

@@ -1,24 +1,14 @@
-<%
-  show_link = true
-%>
+<aside>
+  <%# <p><%= image_tag game.image %></p> %>
+  <p>Publisher: <%= link_to game.publisher.publisher_name, game.publisher%></p>
+  <p><strong> price: <%=number_to_currency game.price%></strong></p>
+  <p><strong> Role: <%= game.role %> </strong></p>
+  <p>Description: <br><%= game.description %></p>
 
-<div class="column">
-  <div class="card">
-    <div class="card-content">
-      <p class="title">
-        <% if show_link %>
-          <%= link_to game.game_name, game%>
-        <% else %>
-          <%= game.game_name%>
-        <% end %>
-      </p>
-      <p><%= image_tag game.image %></p>
-      <p>Publisher: <%= link_to game.publisher.publisher_name, game.publisher%></p>
-      <p><strong> price: <%=number_to_currency game.price%></strong></p>
-      <p><strong> Role: <%= game.role %> </strong></p>
-      <p>Description: <br><%= game.description %></p>
-    </div>
-  </div>
-</div>
+  <%=form_with url: cart_index_path, method: :post do %>
+    <%= hidden_field_tag(:id,game.id) %>
+    <%= button_tag 'Add to Cart '%>
+  <% end %>
+</aside>
 
 

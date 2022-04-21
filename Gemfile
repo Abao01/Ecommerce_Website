@@ -74,3 +74,4 @@ end
 gem 'activeadmin' # Admin dashboard as rails Engine (mini applicaiton)
 gem 'devise' # provides basic authentication by way of credentials.
 gem 'kaminari', '~> 1.2', '>= 1.2.1'
+gem 'webpacker', '~> 4.0'

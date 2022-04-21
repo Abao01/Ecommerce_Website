@@ -1,86 +1,22 @@
-<div class="column is-one-third">
+<%
+  show_link = true
+%>
+
+<div class="column">
   <div class="card">
-    <div class="card-content" >
-      <% @games.each do |game| %>
-        <% if game.image.present? %>
-          <div class="card-image">
-            <figure class="image is-4by3">
-              <p><%= image_tag game.image %></p>
-            </figure>
-          </div>
+    <div class="card-content">
+      <p class="title">
+        <% if show_link %>
+          <%= link_to game.game_name, game%>
+        <% else %>
+          <%= game.game_name%>
         <% end %>
-        <div class="media-content">
-          <p class="title is-4"><%=  link_to game.game_name,game %></p>
-          <p class="subtitle is-6">Publisher: <%= link_to game.publisher.publisher_name, game.publisher%></p>
-        </div>
-        <div class="card-content">
-          <p><strong> price: <%=number_to_currency game.price%></strong></p>
-          <p><strong> Role: <%= game.role %> </strong></p>
-          <p>Description: <br><%= game.description %></p>
-        </div>
-    <% end %>
+      </p>
+      <p><%= image_tag game.image %></p>
+      <p>Publisher: <%= link_to game.publisher.publisher_name, game.publisher%></p>
+      <p><strong> price: <%=number_to_currency game.price%></strong></p>
+      <p><strong> Role: <%= game.role %> </strong></p>
+      <p>Description: <br><%= game.description %></p>
+    </div>
   </div>
 </div>
-<section class="section">
-      <div class="container">
-        <header>
-          <h5>Shop games, exclusive Nintendo merchandise, and more!  Plus, get free shipping on orders $50 and over.</h5>
-          <h5 class="title is-1"><%= link_to 'Game Camp',root_path %></h5>
-          <nav class="navbar" role="navigation" aria-label="dropdown navigation">
-            <div id="navbarBasicExample" class="navbar-menu">
-              <div class="navbar-start">
-                <a class="navbar-item">
-                  <%= link_to "Home", root_path%>
-                </a>
-                <a class="navbar-item">
-                  Loin in
-                </a>
-                <a class="navbar-item">
-                  sign up
-                </a>
-                <div class="navbar-item has-dropdown is-hoverable">
-                  <a class="navbar-link">
-                    More
-                  </a>
-                  <div class="navbar-dropdown">
-                    <a class="navbar-item">
-                      <%= link_to "Games", games_path %>
-                    </a>
-                    <a class="navbar-item">
-                      <%= link_to "Publishers", publishers_path %>
-                    </a>
-                    <a class="navbar-item">
-                      <%= link_to "Genre", genres_path %>
-                    </a>
-                  </div>
-                </div>
-                <div class="navbar-end">
-                  <div class="navbar-item">
-                    <div class="buttons">
-                      <div class="field is-grouped">
-                        <p class="control">
-                          <button class="button is-link">
-                              <%= link_to "My account", admin_root_path %>
-                          </button>
-                        </p>
-                        <p class="control">
-                          <button class="button is-danger">My cart</button>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </nav>
-        </header>
-      </div>
-      <div class="container">
-        <%= form_with(url:search_games_path, local: true, method: :get) do %>
-          <%= label_tag(:keywords,"Search for:")%>
-          <%= text_field_tag(:keywords,nil, class: "input", placeholder: "What are you looking for? ")%>
-          <%= submit_tag("Search")%>
-          <p>Can't find what you're looking for? Try the <%= link_to "Advanced Search", games_path%></p>
-        <%end%>
-      </div>
-  </section>

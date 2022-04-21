@@ -1,11 +1,15 @@
 class ApplicationController < ActionController::Base
   before_action :initialize_session
+  helper_method :cart
 
   private
 
   def initialize_session
     #this will initialize the visit count to zero for new users
-    session[:shopping_cart] ||= 0 #empty array that will products IDs
+    # session[:shopping_cart] ||= [] #empty array that will products IDs
+    unless session[:shopping_cart].is_a?(Hash)
+      session[:shopping_cart] = {}
+    end
   end
 
   def cart

@@ -1,7 +1,7 @@
 <div class="container_fluid">
-  <div class="column">
+  <div class="row">
       <% @games.each do |game| %>
-        <div class="col-lg-4">
+        <div class="col">
           <% if game.image.present? %>
             <div class="card-image">
               <figure class="card-img-top">
@@ -16,7 +16,7 @@
           <div class="card-content">
             <p><strong> price: <%=number_to_currency game.price%></strong></p>
             <p><strong> Role: <%= game.role %> </strong></p>
-            <p>Description: <br><%= game.description %></p>
+            <%= button_tag 'Buy Now 💳' %>
           </div>
         </div>
       <% end %>

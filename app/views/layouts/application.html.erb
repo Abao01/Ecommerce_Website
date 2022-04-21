@@ -15,12 +15,19 @@
   </head>
 
   <body>
+    <%= debug session[:shopping_cart]%>
     <%= render partial: "menu/header"%>
     <% if notice %>
     <div class="list-group-item list-group-item-success text-center">
       <p class="notice"><%= notice %></p>
     </div>
     <% end %>
-  <%= yield %>
+    <main>
+      <% if flash[:notice]%>
+        <p><%= flash[:notice]%></p>
+      <% end %>
+      <%= yield %>
+    </main>
+
   </body>
 </html>
