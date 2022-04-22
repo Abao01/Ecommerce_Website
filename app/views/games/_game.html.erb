@@ -1,25 +1,22 @@
 <div class="container_fluid">
-  <div class="row">
+  <div class="row row-cols-4">
     <div class="col">
       <p><%= image_tag game.image %></p>
-        <div class="media-content">
-        <p class="title is-4"><%=  link_to game.game_name,game %></p>
-        <p class="subtitle is-6">Publisher: <%= link_to game.publisher.publisher_name, game.publisher%></p>
-      <div class="card-content">
-        <p><strong> price: <%=number_to_currency game.price%></strong></p>
-        <p><strong> Role: <%= game.role %> </strong></p>
-        <p>Description: <br><%= game.description %></p>
-        <% if cart.include?(game) %>
-          <%= button_to cart_path(game), method: :delete do %>
-          Remove from cart
+      <p class="title is-4"><%=  link_to game.game_name,game %></p>
+      <p class="subtitle is-6">Publisher: <%= link_to game.publisher.publisher_name, game.publisher%></p>
+      <p><strong> price: <%=number_to_currency game.price%></strong></p>
+      <p><strong> Role: <%= game.role %> </strong></p>
+      <p>Description: <br><%= game.description %></p>
+      <% if cart.include?(game) %>
+        <%= button_to cart_path(game), method: :delete do %>
+        Remove from cart
+      <% end %>
+      <%else%>
+        <%=form_with url: cart_index_path, method: :post do %>
+          <%= hidden_field_tag(:id,game.id) %>
+          <%= button_tag 'Add to Cart '%>
         <% end %>
-        <%else%>
-          <%=form_with url: cart_index_path, method: :post do %>
-            <%= hidden_field_tag(:id,game.id) %>
-            <%= button_tag 'Add to Cart '%>
-          <% end %>
-        <%end%>
-
+      <%end%>
     </div>
   </div>
 </div>
