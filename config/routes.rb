@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   end
   resources :genres,only: [:index, :show]
   resources :search,only: [:index, :show]
-  root "home#index"
+  root "games#index"
 
   devise_scope :user do
     get 'users/sign_out' => "devise/sessions#destroy"
