@@ -1,0 +1,21 @@
+<h1>Advanced Search</h1>
+<div class="container">
+  <%= form_tag games_path, method: :get do %>
+    <%= label_tag :game %>
+    <%= text_field_tag :keywords, params[:keywords] %><br>
+
+    <%= label_tag :publisher %>
+    <%= select_tag :publisher, options_for_select(@publishers, params[:publisher]), include_blank: true %><br>
+
+    <%= label_tag "price From" %>
+    <%= text_field_tag :min_price, params[:min_price] %>
+
+    <%= label_tag "To" %>
+    <%= text_field_tag :max_price, params[:max_price] %><br><br>
+
+    <%= label_tag "Filters" %>
+    <%= select_tag :publish_time, options_for_select({"Created in lastest 3 days": "last_3_days_created", "Upated": "last_3_days_updated"}, params[:publish_time]), include_blank: true  %><br><br>
+
+    <%= submit_tag "Search" %>
+  <% end %>
+</div>

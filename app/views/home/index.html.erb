@@ -16,6 +16,7 @@
           <div class="card-content">
             <p><strong> price: <%=number_to_currency game.price%></strong></p>
             <p><strong> Role: <%= game.role %> </strong></p>
+            <p>Description: <br><%= game.description %></p>
             <% if cart.include?(game) %>
               <%= button_to cart_path(game), method: :delete do %>
               Remove from cart
