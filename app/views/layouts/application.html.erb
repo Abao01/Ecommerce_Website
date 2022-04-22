@@ -29,6 +29,28 @@
       <% end %>
       <%= yield %>
     </main>
-
+    <footer>
+      <details>
+        <summary>
+          cart
+          <%if cart.present?%>
+            <sup><%= cart.size%></sup>
+          <%end%>
+        </summary>
+        <% if cart.present? %>
+          <ul>
+            <% cart.each do |game| %>
+              <li>
+                <%= game.game_name %> <%= link_to '➖', cart_path(game), method: :delete %>
+              </li>
+            <% end %>
+          </ul>
+        <%else%>
+          <p>No items in your cart.</p>
+        <% end %>
+      </details>
+      <hr>
+      <p><span>🐐</span> Game Camp <span>🧥</span> - Copywrong <%= Time.current.year %></p>
+    </footer>
   </body>
 </html>
