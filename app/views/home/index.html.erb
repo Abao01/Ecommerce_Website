@@ -17,15 +17,15 @@
             <p><strong> price: <%=number_to_currency game.price%></strong></p>
             <p><strong> Role: <%= game.role %> </strong></p>
             <% if cart.include?(game) %>
-                <%= button_to cart_path(game), method: :delete do %>
-                Remove from cart
+              <%= button_to cart_path(game), method: :delete do %>
+              Remove from cart
+            <% end %>
+            <%else%>
+              <%=form_with url: cart_index_path, method: :post do %>
+                <%= hidden_field_tag(:id,game.id) %>
+                <%= button_tag 'Add to Cart '%>
               <% end %>
-              <%else%>
-                <%=form_with url: cart_index_path, method: :post do %>
-                  <%= hidden_field_tag(:id,game.id) %>
-                  <%= button_tag 'Add to Cart '%>
-                <% end %>
-              <%end%>
+            <%end%>
           </div>
         </div>
       <% end %>

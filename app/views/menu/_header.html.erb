@@ -31,22 +31,9 @@
             <li><a class="dropdown-item" href="/games">Games</a></li>
             <li><a class="dropdown-item" href="/publishers">Publishers</a></li>
             <li><a class="dropdown-item" href="/genres">Genres</a></li>
-            <li><hr class="dropdown-divider"></li>
+            <%# <li><hr class="dropdown-divider"></li> %>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
-          <li class="nav-item">
-            <a class="nav-link">Cart</a>
-            <% if cart.present? %>
-              <sup><%= cart.size %></sup>
-              <ul>
-                <% cart.each do |game| %>
-                  <li>
-                    <%= game.game_name %> <%= link_to '➖', cart_path(game), method: :delete %>
-                  </li>
-                <% end %>
-              </ul>
-            <% end %>
-          </li>
         <li class="nav-item">
           <a class="nav-link disabled">Disabled</a>
         </li>
@@ -60,6 +47,16 @@
       <% if user_signed_in? %>
       <li class="nav-item">
         <%= link_to "Cart (#{@all_items_count})", shopping_carts_path, class: "nav-link text-muted " %>
+        <% if cart.present? %>
+        <sup><%= cart.size %></sup>
+        <ul>
+          <% cart.each do |game| %>
+            <li>
+              <%= game.game_name %> <%= link_to '➖', cart_path(game), method: :delete %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
       </li>
       <% end %>
       <% if user_signed_in? %>
